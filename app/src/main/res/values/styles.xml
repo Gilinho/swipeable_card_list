@@ -26,9 +26,7 @@
         <item name="android:background">@color/alert_background</item>
     </style>
 
-    <style name="Alert_Title">
-        <item name="android:textColor">@color/alert</item>
+    <style name="SubTitle.Alert">
         <item name="android:textSize">@dimen/alert</item>
-        <item name="android:typeface">normal</item>
     </style>
 </resources>

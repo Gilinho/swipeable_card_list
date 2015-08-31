@@ -7,5 +7,5 @@
     <dimen name="title">18sp</dimen>
     <dimen name="subtitle">16sp</dimen>
     <dimen name="hint">26sp</dimen>
-    <dimen name="alert">30sp</dimen>
+    <dimen name="alert">18sp</dimen>
 </resources>

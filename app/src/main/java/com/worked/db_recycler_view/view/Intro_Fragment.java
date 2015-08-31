@@ -83,8 +83,6 @@ public class Intro_Fragment extends Fragment {
             holder.getBinding().setVariable(BR.card, card);
 
             holder.getBinding().executePendingBindings();
-
-            //holder.title.setText(cards.get(position).getTitle());
         }
 
         // Return the size of your data (invoked by the layout manager)
@@ -92,8 +90,6 @@ public class Intro_Fragment extends Fragment {
         public int getItemCount() {
             return CardList.getCardsCount();
         }
-
-
 
         /**
          * Custom ViewHolder, in this case a binding holder
