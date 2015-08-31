@@ -1,0 +1,109 @@
+{
+  "card_screen": {
+    "title": "Sample Intro Screen",
+    "cards": [
+      {
+        "card": {
+          "id": "card_000",
+          "index": 0,
+          "views": {
+            "title": "Sample Card ...0123",
+            "subtitle": "Current Balance"
+          },
+          "alert": {},
+          "summary": {
+            "type": "CREDIT",
+            "balance": "$92.76"
+          }
+        }
+      },
+      {
+        "card": {
+          "id": "card_001",
+          "index": 1,
+          "views": {
+            "title": "Sample Loan ...4567",
+            "subtitle": "Available Credit"
+          },
+          "alert": {
+            "alert_enabled": "true",
+            "alert_title": "Due Date : Dec 5th, 2015",
+            "alert_icon": "calendar"
+          },
+          "summary": {
+            "type": "LOAN",
+            "credit": "$43,161.55"
+          }
+        }
+      },
+      {
+        "card": {
+          "id": "card_002",
+          "index": 2,
+          "views": {
+            "title": "Sample Card ...8901",
+            "subtitle": "Current Balance"
+          },
+          "alert": {},
+          "summary": {
+            "type": "CREDIT",
+            "balance": "$2,031.09"
+          }
+        }
+      },
+      {
+        "card": {
+          "id": "card_003",
+          "index": 3,
+          "views": {
+            "title": "Sample Card ...0987",
+            "subtitle": "Current Balance"
+          },
+          "alert": {
+            "alert_enabled": "true",
+            "alert_title": "Due Date : Dec 3rd, 2015",
+            "alert_icon": "calendar"
+          },
+          "summary": {
+            "type": "CREDIT",
+            "balance": "$187.12"
+          }
+        }
+      },
+      {
+        "card": {
+          "id": "card_004",
+          "index": 4,
+          "views": {
+            "title": "Sample Loan ...6543",
+            "subtitle": "Available Credit"
+          },
+          "alert": {
+            "alert_enabled": "true",
+            "alert_title": "Due Date : Nov 2nd, 2015",
+            "alert_icon": "calendar"
+          },
+          "summary": {
+            "type": "LOAN",
+            "credit": "$1,222,322.96"
+          }
+        }
+      },
+      {
+        "card": {
+          "id": "card_005",
+          "index": 5,
+          "views": {
+            "title": "Sample Loan ...2109",
+            "subtitle": "Available Credit"
+          },
+          "alert": {},
+          "summary": {
+            "type": "LOAN",
+            "credit": "$12.00"
+          }
+        }
+      }
+    ]
+  }
+}

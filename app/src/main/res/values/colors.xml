@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- enabled -->
+    <color name="title">#FF000000</color>
+    <color name="subtitle">#FFFFFF</color>
+    <color name="hint">#FFFFFF</color>
+    <!-- cards -->
+    <color name="card_red">#58962f</color>
+    <color name="card_blue">#316396</color>
+    <!-- alert -->
+    <color name="alert_background">#33000000</color>
+    <color name="alert">#FFFFFFFF</color>
+</resources>

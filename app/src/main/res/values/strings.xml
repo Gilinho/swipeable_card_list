@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">DB Recycler View</string>
+    <string name="loan">Available Credit</string>
+    <string name="credit">Current Balance</string>
+    <string name="recycler_view">Recycler View</string>
+</resources>

@@ -1,0 +1,34 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Title" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/title</item>
+        <item name="android:textSize">@dimen/title</item>
+        <item name="android:typeface">normal</item>
+    </style>
+
+    <style name="SubTitle" parent="Title">
+        <item name="android:textSize">@dimen/subtitle</item>
+        <item name="android:textColor">@color/subtitle</item>
+    </style>
+
+    <style name="Hint" parent="SubTitle">
+        <item name="android:textSize">@dimen/hint</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textColor">@color/hint</item>
+    </style>
+
+    <style name="Alert">
+        <item name="android:background">@color/alert_background</item>
+    </style>
+
+    <style name="Alert_Title">
+        <item name="android:textColor">@color/alert</item>
+        <item name="android:textSize">@dimen/alert</item>
+        <item name="android:typeface">normal</item>
+    </style>
+</resources>
