@@ -29,9 +29,15 @@ public class ParseUtils {
         try {
             JSONObject obj = new JSONObject(loadJSONFromAsset(context, json));
 
+            if(obj == null) return;
+
             JSONObject intro_screen = obj.getJSONObject("card_screen");
 
+            if(intro_screen == null) return;
+
             JSONArray cards = intro_screen.getJSONArray("cards");
+
+            if(cards == null) return;
 
             CardList cardList = CardList.getInstance();
 
@@ -76,9 +82,8 @@ public class ParseUtils {
                     cardModel.setCredit(summary.optString("credit"));
                 }
 
-                if (cardModel == null) {
-                    return;
-                }
+                if (cardModel == null) return;
+
 
                 cardList.addCard(cardModel);
             }
