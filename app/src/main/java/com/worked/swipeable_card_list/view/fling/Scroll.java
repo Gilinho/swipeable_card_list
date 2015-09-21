@@ -70,9 +70,7 @@ public class Scroll implements Runnable {
 
                 SwipeableCardList.removeCardAt(position);
 
-                adapter.notifyItemRemoved(position);
-
-                adapter.notifyItemRangeChanged(position, SwipeableCardList.getCardsCount());
+                adapter.notifyItemRangeRemoved(position, 1);
 
                 return;
             }
