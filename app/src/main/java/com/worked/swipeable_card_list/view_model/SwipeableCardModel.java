@@ -1,16 +1,16 @@
-package com.worked.db_recycler_view.view_model;
+package com.worked.swipeable_card_list.view_model;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.graphics.drawable.Drawable;
 
-import com.worked.db_recycler_view.view.Intro_Activity;
+import com.worked.swipeable_card_list.view.Intro_Activity;
 
 /**
  * Card Model Object
  * Represents each card in the recycler {@link Intro_Activity}
  */
-public class CardModel extends BaseObservable {
+public class SwipeableCardModel extends BaseObservable {
 
     // base attributes
     private String id;

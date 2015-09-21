@@ -1,4 +1,4 @@
-package com.worked.db_recycler_view;
+package com.worked.swipeable_card_list;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,4 +1,4 @@
-package com.worked.db_recycler_view.utils;
+package com.worked.swipeable_card_list.utils;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -6,8 +6,8 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v4.content.res.ResourcesCompat;
 
-import com.worked.db_recycler_view.view_model.CardModel;
-import com.worked.db_recycler_view.view_model_controller.CardList;
+import com.worked.swipeable_card_list.view_model.SwipeableCardModel;
+import com.worked.swipeable_card_list.view_model_controller.SwipeableCardList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,21 +29,21 @@ public class ParseUtils {
         try {
             JSONObject obj = new JSONObject(loadJSONFromAsset(context, json));
 
-            if(obj == null) return;
+            if (obj == null) return;
 
             JSONObject intro_screen = obj.getJSONObject("card_screen");
 
-            if(intro_screen == null) return;
+            if (intro_screen == null) return;
 
             JSONArray cards = intro_screen.getJSONArray("cards");
 
-            if(cards == null) return;
+            if (cards == null) return;
 
-            CardList cardList = CardList.getInstance();
+            SwipeableCardList cardList = SwipeableCardList.getInstance();
 
             for (int i = 0; i < cards.length(); i++) {
                 // card data
-                CardModel cardModel = new CardModel();
+                SwipeableCardModel cardModel = new SwipeableCardModel();
 
                 JSONObject card = cards.optJSONObject(i).optJSONObject("card");
 

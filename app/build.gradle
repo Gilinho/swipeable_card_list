@@ -6,7 +6,7 @@ android {
     buildToolsVersion "23.0.0"
 
     defaultConfig {
-        applicationId "com.worked.db_recycler_view"
+        applicationId "com.worked.swipeable_card_list"
         minSdkVersion 21
         targetSdkVersion 22
         versionCode 1
