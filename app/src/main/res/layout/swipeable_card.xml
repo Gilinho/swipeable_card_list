@@ -17,8 +17,7 @@
     <FrameLayout
         android:id="@+id/swipeable_card_view_wrapper"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/block">
+        android:layout_height="match_parent">
 
         <!-- CARD -->
         <android.support.v7.widget.CardView xmlns:swipeable_card_view="http://schemas.android.com/apk/res-auto"
