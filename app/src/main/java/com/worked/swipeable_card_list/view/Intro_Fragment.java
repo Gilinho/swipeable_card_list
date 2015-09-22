@@ -74,9 +74,7 @@ public class Intro_Fragment extends Fragment {
 
         recyclerView.setHasFixedSize(true);
 
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(context);
-
-        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
         recyclerView.setAdapter(new CardAdapter());
     }
@@ -100,6 +98,12 @@ public class Intro_Fragment extends Fragment {
             holder.getBinding().setVariable(BR.swipeableCard, swipeableCard);
 
             holder.getBinding().executePendingBindings();
+
+            // reset recycled views... gotta love the recycler view
+
+            holder.getBinding().getRoot().findViewById(R.id.swipeable_card_view).setX(Constants.START_X);
+
+            holder.getBinding().getRoot().findViewById(R.id.swipeable_card_view).setAlpha(Constants.OPAQUE);
         }
 
         // Return the size of your data (invoked by the layout manager)
@@ -172,9 +176,6 @@ public class Intro_Fragment extends Fragment {
              */
             @Override
             public boolean onTouch(View view, MotionEvent event) {
-                // translates view without affecting velocity tracking
-                //event.offsetLocation(newX, view.getY());
-
                 // set current position
                 scroll.setPosition(getAdapterPosition());
 
@@ -233,7 +234,7 @@ public class Intro_Fragment extends Fragment {
 
                         velocityTracker.recycle();
 
-                        // not off screen & not a fling gesture : reset card
+                        // not off screen & not a gesture : reset card
                         if (newX != Constants.START_X && !gestureDetector.onTouchEvent(event)) {
                             card.setX(Constants.START_X);
 

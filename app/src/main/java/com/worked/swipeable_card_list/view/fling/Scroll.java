@@ -70,7 +70,7 @@ public class Scroll implements Runnable {
 
                 SwipeableCardList.removeCardAt(position);
 
-                adapter.notifyItemRangeRemoved(position, 1);
+                adapter.notifyItemRemoved(position);
 
                 return;
             }
@@ -86,8 +86,6 @@ public class Scroll implements Runnable {
             view.setAlpha(Constants.OPAQUE);
 
             scrollX = Constants.START_X;
-
-            scroller.abortAnimation();
 
             Log.d(TAG, "resetting card X location : " + scrollX);
 

@@ -103,6 +103,40 @@
             "credit": "$12.00"
           }
         }
+      },
+      {
+        "card": {
+          "id": "card_006",
+          "index": 6,
+          "views": {
+            "title": "Sample Card ...9999",
+            "subtitle": "Current Balance"
+          },
+          "alert": {},
+          "summary": {
+            "type": "CREDIT",
+            "balance": "$9.99"
+          }
+        }
+      },
+      {
+        "card": {
+          "id": "card_007",
+          "index": 7,
+          "views": {
+            "title": "Sample Loan ...8888",
+            "subtitle": "Available Credit"
+          },
+          "alert": {
+            "alert_enabled": "true",
+            "alert_title": "Due Date : Nov 22nd, 2015",
+            "alert_icon": "calendar"
+          },
+          "summary": {
+            "type": "LOAN",
+            "credit": "$2.22"
+          }
+        }
       }
     ]
   }
