@@ -79,7 +79,7 @@ public class Scroll implements Runnable {
                 adapter.notifyItemRemoved(position);
 
                 // snackbar
-                Snackbar.make(recyclerView.findViewById(R.id.intro_container), card.getTitle() + " has been removed.", Snackbar.LENGTH_LONG)
+                Snackbar.make(recyclerView.findViewById(R.id.intro_container), card.getTitle() + " has been removed.", Constants.SNACKBAR_LENGTH)
                         .setAction("Undo", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -109,6 +109,9 @@ public class Scroll implements Runnable {
         }
     }
 
+    /**
+     * Reset card attributes
+     */
     private void resetCard() {
         view.setX(Constants.START_X);
 
