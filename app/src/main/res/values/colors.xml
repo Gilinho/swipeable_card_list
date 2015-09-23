@@ -5,8 +5,9 @@
     <color name="subtitle">#FFFFFF</color>
     <color name="hint">#FFFFFF</color>
     <!-- cards -->
-    <color name="card_red">#58962f</color>
+    <color name="card_green">#58962f</color>
     <color name="card_blue">#316396</color>
+    <color name="card_red">#d13738</color>
     <!-- alert -->
     <color name="alert_background">#33000000</color>
     <color name="alert">#FFFFFFFF</color>

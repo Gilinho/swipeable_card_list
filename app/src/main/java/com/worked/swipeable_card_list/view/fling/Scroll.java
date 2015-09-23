@@ -5,7 +5,6 @@ package com.worked.swipeable_card_list.view.fling;
  */
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +15,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.Scroller;
 
 import com.worked.swipeable_card_list.R;
+import com.worked.swipeable_card_list.utils.ParseUtils;
 import com.worked.swipeable_card_list.utils.shared.Constants;
 import com.worked.swipeable_card_list.view_model.SwipeableCardModel;
 import com.worked.swipeable_card_list.view_model_controller.SwipeableCardList;
@@ -78,21 +78,12 @@ public class Scroll implements Runnable {
 
                 adapter.notifyItemRemoved(position);
 
-                // snackbar
-                Snackbar.make(recyclerView.findViewById(R.id.intro_container), card.getTitle() + " has been removed.", Constants.SNACKBAR_LENGTH)
-                        .setAction("Undo", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                SwipeableCardList.addCardAt(card, position);
-
-                                adapter.notifyItemInserted(position);
-
-                                // reset card
-                                resetCard();
-                            }
-                        })
-                        .setActionTextColor(Color.RED)
-                        .show();
+                // snackbars
+                if (SwipeableCardList.getCardsCount() > 0) {
+                    createSnackBar(card, Constants.SNACKBAR_LENGTH, card.getTitle() + " has been removed!", "Undo", Listener.RESET_CARD);
+                } else {
+                    createSnackBar(card, Snackbar.LENGTH_INDEFINITE, "All cards have been removed!", "Reset Cards", Listener.RESET_CARDS);
+                }
 
                 return;
             }
@@ -107,6 +98,59 @@ public class Scroll implements Runnable {
 
             return;
         }
+    }
+
+    /**
+     * Snackbar time!
+     *
+     * @param card     card
+     * @param duration duration
+     * @param listener listener
+     */
+    private void createSnackBar(SwipeableCardModel card, int duration, String message, String action, Listener listener) {
+        // snackbar
+        Snackbar.make(recyclerView.findViewById(R.id.intro_container), message, duration)
+                .setAction(action, createListener(card, listener))
+                .setActionTextColor(context.getResources().getColor(R.color.card_red))
+                .show();
+    }
+
+    /**
+     * Click listener
+     *
+     * @param card     card
+     * @param listener listener
+     * @return click listener
+     */
+    private View.OnClickListener createListener(final SwipeableCardModel card, Listener listener) {
+        switch (listener) {
+
+            // reset individual cards
+            case RESET_CARD:
+                return new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        SwipeableCardList.addCardAt(card, position);
+
+                        adapter.notifyItemInserted(position);
+
+                        resetCard();
+                    }
+                };
+
+            // reset all cards
+            case RESET_CARDS:
+                return new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ParseUtils.parseJsonData(context, Constants.MODEL_JSON);
+
+                        adapter.notifyDataSetChanged();
+                    }
+                };
+        }
+
+        return null;
     }
 
     /**
@@ -158,11 +202,11 @@ public class Scroll implements Runnable {
         return true;
     }
 
-    // getters & setters
-
     public View getView() {
         return view;
     }
+
+    // getters & setters
 
     public void setView(CardView view) {
         this.view = view;
@@ -174,5 +218,9 @@ public class Scroll implements Runnable {
 
     public void setPosition(int position) {
         this.position = position;
+    }
+
+    public enum Listener {
+        RESET_CARD, RESET_CARDS;
     }
 }

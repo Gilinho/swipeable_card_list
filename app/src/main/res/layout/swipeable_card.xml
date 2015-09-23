@@ -27,7 +27,7 @@
             android:layout_margin="0dp"
             android:foreground="@drawable/ripple"
             android:padding="0dp"
-            swipeable_card_view:cardBackgroundColor="@{swipeableCard.getType().equals(Cards.LOAN.name()) ? @color/card_blue : @color/card_red}"
+            swipeable_card_view:cardBackgroundColor="@{swipeableCard.getType().equals(Cards.LOAN.name()) ? @color/card_blue : @color/card_green}"
             swipeable_card_view:cardCornerRadius="6dp"
             swipeable_card_view:cardElevation="3dp"
             swipeable_card_view:cardUseCompatPadding="true">

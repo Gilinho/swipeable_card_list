@@ -1,6 +1,5 @@
 package com.worked.swipeable_card_list.view;
 
-import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
