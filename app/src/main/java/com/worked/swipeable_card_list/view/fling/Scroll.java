@@ -40,6 +40,8 @@ public class Scroll implements Runnable {
 
     private String direction;
 
+    private int threshold;
+
     // constructor
     public Scroll(Context context, RecyclerView recyclerView) {
         this.recyclerView = recyclerView;
@@ -68,7 +70,7 @@ public class Scroll implements Runnable {
 
             view.setAlpha(alpha);
 
-            // off screen : remove card from adaptor
+            // off screen : remove card from recycler view
             if (scrollX > view.getMeasuredWidth() || scrollX < -view.getMeasuredWidth()) {
                 Log.d(TAG, "remove card : " + SwipeableCardList.getCardAt(position).getTitle());
 
@@ -92,9 +94,11 @@ public class Scroll implements Runnable {
             view.post(this);
         }
 
-        // not off screen : reset card
+        // on screen : fling card off
         if (scroller.isFinished() && scrollX != Constants.START_X) {
-            resetCard();
+            threshold = direction.equals(Constants.RIGHT) ? threshold : -threshold;
+
+            scroller.startScroll(scrollX, 0, threshold, 0);
 
             return;
         }
@@ -176,13 +180,17 @@ public class Scroll implements Runnable {
      * @return true
      */
     public boolean onFling(float motionX, float motionY, float velocityX, float velocityY, String direction) {
+        this.direction = direction;
+
+        threshold = view.getMeasuredWidth() * 2;
+
         int moX = (int) motionX;
 
         int moY = 0;
 
-        int minX = -view.getMeasuredWidth() * 2;
+        int minX = -threshold;
 
-        int maxX = view.getMeasuredWidth() * 2;
+        int maxX = threshold;
 
         int minY = 0;
 
@@ -192,8 +200,6 @@ public class Scroll implements Runnable {
 
         int velY = 0;
 
-        this.direction = direction;
-
         // fling magic
         scroller.fling(moX, moY, velX, velY, minX, maxX, minY, maxY);
 
@@ -202,11 +208,11 @@ public class Scroll implements Runnable {
         return true;
     }
 
+    // getters & setters
+
     public View getView() {
         return view;
     }
-
-    // getters & setters
 
     public void setView(CardView view) {
         this.view = view;
@@ -220,6 +226,9 @@ public class Scroll implements Runnable {
         this.position = position;
     }
 
+    /**
+     * Listener Types
+     */
     public enum Listener {
         RESET_CARD, RESET_CARDS;
     }

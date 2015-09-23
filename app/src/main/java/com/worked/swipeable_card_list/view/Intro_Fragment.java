@@ -128,7 +128,7 @@ public class Intro_Fragment extends Fragment {
 
             private VelocityTracker velocityTracker;
 
-            private int newX, offsetX;
+            private int currentX, offsetX;
 
             private ViewDataBinding binding;
 
@@ -205,16 +205,16 @@ public class Intro_Fragment extends Fragment {
                     case MotionEvent.ACTION_MOVE:
                         Log.d("TAG", "onMove  : " + (int) card.getX());
 
-                        newX = (int) event.getRawX() + offsetX;
+                        currentX = (int) event.getRawX() + offsetX;
 
-                        direction = newX > Constants.START_X ? Constants.RIGHT : Constants.LEFT;
+                        direction = currentX > Constants.START_X ? Constants.RIGHT : Constants.LEFT;
 
                         // touch slop : used to prevent accidental scrolling when the user is
                         // performing some other touch operation, such as touching on-screen elements
-                        if (Math.abs(newX) > mSlop) {
-                            card.setX(newX);
+                        if (Math.abs(currentX) > mSlop) {
+                            card.setX(currentX);
 
-                            float offset = (float) newX / (recyclerView.getMeasuredWidth() - Constants.THRESHOLD);
+                            float offset = (float) currentX / (recyclerView.getMeasuredWidth() - Constants.THRESHOLD);
 
                             float alpha = direction.equals(Constants.RIGHT) ? Constants.FLOAT - offset : Constants.FLOAT + offset;
 
@@ -230,18 +230,18 @@ public class Intro_Fragment extends Fragment {
                     case MotionEvent.ACTION_UP:
                         Log.d("TAG", "onUp    : " + (int) card.getX());
 
+                        // fling card off screen if not "flinged" hard enough.
+                        if (currentX != Constants.START_X && !gestureDetector.onTouchEvent(event)) {
+                            if (direction.equals(Constants.RIGHT)) {
+                                scroll.onFling(currentX, 0, Constants.VELOCITY, 0, direction);
+                            } else {
+                                scroll.onFling(currentX, 0, -Constants.VELOCITY, 0, direction);
+                            }
+                        }
+
                         recyclerView.requestDisallowInterceptTouchEvent(false);
 
                         velocityTracker.recycle();
-
-                        // not off screen & not a gesture : reset card
-                        if (newX != Constants.START_X && !gestureDetector.onTouchEvent(event)) {
-                            card.setX(Constants.START_X);
-
-                            card.setAlpha(Constants.OPAQUE);
-
-                            Log.d(TAG, "resetting card X location : " + (int) card.getX());
-                        }
 
                         break;
                 }
