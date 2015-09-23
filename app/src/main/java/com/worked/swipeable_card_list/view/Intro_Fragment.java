@@ -232,11 +232,9 @@ public class Intro_Fragment extends Fragment {
 
                         // fling card off screen if not "flinged" hard enough.
                         if (currentX != Constants.START_X && !gestureDetector.onTouchEvent(event)) {
-                            if (direction.equals(Constants.RIGHT)) {
-                                scroll.onFling(currentX, 0, Constants.VELOCITY, 0, direction);
-                            } else {
-                                scroll.onFling(currentX, 0, -Constants.VELOCITY, 0, direction);
-                            }
+                            float velocity = direction.equals(Constants.RIGHT) ? Constants.VELOCITY : -Constants.VELOCITY;
+
+                            scroll.onFling(currentX, 0, velocity, 0, direction);
                         }
 
                         recyclerView.requestDisallowInterceptTouchEvent(false);
