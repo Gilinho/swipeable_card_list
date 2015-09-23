@@ -68,6 +68,25 @@ public class SwipeableCardList {
     }
 
     /**
+     * Add model data at index
+     *
+     * @param cardData card data
+     * @param index    index
+     */
+    public static void addCardAt(@NonNull SwipeableCardModel cardData, @NonNull int index) {
+        data.add(index, cardData);
+    }
+
+    /**
+     * remove model data by object
+     *
+     * @param cardData
+     */
+    public static void removeCard(@NonNull SwipeableCardModel cardData) {
+        data.remove(cardData);
+    }
+
+    /**
      * Remove model data by position
      *
      * @param position

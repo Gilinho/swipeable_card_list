@@ -4,12 +4,13 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.worked.swipeable_card_list.R;
 import com.worked.swipeable_card_list.utils.ParseUtils;
 import com.worked.swipeable_card_list.utils.shared.Constants;
 
-public class Intro_Activity extends Activity {
+public class Intro_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
