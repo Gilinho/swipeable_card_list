@@ -230,7 +230,7 @@ public class Intro_Fragment extends Fragment {
                     case MotionEvent.ACTION_UP:
                         Log.d("TAG", "onUp    : " + (int) card.getX());
 
-                        // fling card off screen if not "flinged" hard enough.
+                        // scroll card off screen if not flung enough
                         if (currentX != Constants.START_X && !gestureDetector.onTouchEvent(event)) {
                             float velocity = direction.equals(Constants.RIGHT) ? Constants.VELOCITY : -Constants.VELOCITY;
 
